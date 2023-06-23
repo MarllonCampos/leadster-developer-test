@@ -4,7 +4,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 45px;
+  padding: 44px;
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
   `}
