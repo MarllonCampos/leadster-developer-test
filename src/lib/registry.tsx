@@ -1,9 +1,6 @@
-'use client';
-
 import React, { useState } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
 import { ServerStyleSheet, StyleSheetManager, ThemeProvider } from 'styled-components';
-import Tokens from '../styles/tokens';
 import '@/styles/global.css';
 export default function StyledComponentsRegistry({ children }: { children: React.ReactNode }) {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
@@ -16,9 +13,5 @@ export default function StyledComponentsRegistry({ children }: { children: React
 
   if (typeof window !== 'undefined') return <>{children}</>;
 
-  return (
-    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      <ThemeProvider theme={Tokens}>{children}</ThemeProvider>
-    </StyleSheetManager>
-  );
+  return <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>{children}</StyleSheetManager>;
 }
