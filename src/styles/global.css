@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Jakarta';
+  src: url('/fonts/PlusJakarta.ttf') format('truetype'), url('/fonts/ItalicPlusJakarta.ttf') format('truetype');
+}
+* {
+  font-family: 'Jakarta', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
