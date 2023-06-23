@@ -8,6 +8,7 @@ declare module 'styled-components' {
       'blue-100': string;
       'blue-200': string;
       text: string;
+      'text-50': string;
       shadow: string;
     };
   }
