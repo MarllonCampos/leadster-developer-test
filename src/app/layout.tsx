@@ -5,8 +5,8 @@ import { myTheme } from '@/styles/tokens';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <body>
+    <html lang="pt-br">
+      <body suppressHydrationWarning>
         <StyledComponentsRegistry>
           <ThemeProvider theme={myTheme}>{children}</ThemeProvider>
         </StyledComponentsRegistry>
