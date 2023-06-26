@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from './styles';
 import Link from 'next/link';
 import Image from 'next/image';
-
+const MOBILE_DEVICE_SIZE = 768;
 type SocialLinks = {
   url: string;
   icon: string;
@@ -35,7 +35,7 @@ interface FormattedSocialLinks {
 
 function convertSocialLinksToDeepLink({ innerWidth, socialLinksArray }: FormattedSocialLinks): SocialLinks[] {
   console.log(innerWidth);
-  if (innerWidth > 768) return socialLinksArray;
+  if (innerWidth > MOBILE_DEVICE_SIZE) return socialLinksArray;
   return [
     {
       url: 'https://www.linkedin.com/in/marllon-campos/',
@@ -57,21 +57,29 @@ function convertSocialLinksToDeepLink({ innerWidth, socialLinksArray }: Formatte
 
 const NavSocials: React.FC = () => {
   const [socialState, setSocialState] = useState<SocialLinks[]>(socialLinks);
-
-  useEffect(() => {
+  function changeLinksToMobile(event: Event) {
+    const target = event.target as Window;
+    if (target.innerWidth > MOBILE_DEVICE_SIZE) return;
     setSocialState((prevState) =>
       convertSocialLinksToDeepLink({
         innerWidth: window.innerWidth,
         socialLinksArray: prevState,
       })
     );
+  }
+  useEffect(() => {
+    window.addEventListener('resize', changeLinksToMobile);
+
+    () => {
+      window.removeEventListener('resize', changeLinksToMobile);
+    };
   }, []);
 
   return (
     <Container>
       <h4>Siga a Leadster</h4>
       <ul>
-        {socialLinks.map(({ url, icon, alt }) => (
+        {socialState.map(({ url, icon, alt }) => (
           <li key={url}>
             <Link target="_blank" href={url}>
               <Image alt={alt} src={icon} width={45} height={45} />
