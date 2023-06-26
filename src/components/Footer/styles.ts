@@ -54,6 +54,13 @@ export const Copyright = styled.div.attrs({ className: 'copyright' })`
 `;
 
 export const FooterNav = styled.nav`
+  width: 100%;
+  max-width: 1100px;
+
   display: flex;
   flex-wrap: wrap;
+  gap: 35px;
+
+  padding: 40px 20px;
+  margin: 0 auto;
 `;
