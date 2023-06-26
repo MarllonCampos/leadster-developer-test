@@ -55,7 +55,7 @@ export const Copyright = styled.div.attrs({ className: 'copyright' })`
 
 export const FooterNav = styled.nav`
   width: 100%;
-  max-width: 1100px;
+  max-width: 1180px;
 
   display: flex;
   flex-wrap: wrap;
