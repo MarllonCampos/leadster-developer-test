@@ -45,11 +45,11 @@ const navLinks: NavLinksObjects[] = [
         link: '/cases/geracao-de-leads/b2b',
       },
       {
-        text: 'Ferramenta',
+        text: 'Geração de Leads em Software',
         link: '/cases/geracao-de-leads/software',
       },
       {
-        text: 'Ferramenta',
+        text: 'Geração de Leads em Imobiliaria',
         link: '/cases/geracao-de-leads/imobiliaria',
       },
       {
@@ -62,19 +62,19 @@ const navLinks: NavLinksObjects[] = [
     title: 'Materiais',
     links: [
       {
-        text: 'Geração de Leads B2B',
+        text: 'Blog',
         link: '/materiais/blog',
       },
       {
-        text: 'Ferramenta',
+        text: 'Parceria com Agências',
         link: '/materiais/parceria-agencias',
       },
       {
-        text: 'Ferramenta',
+        text: 'Guia Definitivo do Marketing',
         link: '/materiais/guia-marketing',
       },
       {
-        text: 'Preços',
+        text: 'Materiais Gratuitos',
         link: '/materiais/materiais-free',
       },
     ],
