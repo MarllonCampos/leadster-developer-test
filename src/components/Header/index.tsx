@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Header: React.FC = () => {
   return (
     <Container>
-      <Image src={'/logo.png'} width={194} height={42} alt="Leadster Logo" />
+      <Image src={'/logo.png'} width={194} height={42} alt="Leadster Logo" priority />
     </Container>
   );
 };
