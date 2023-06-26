@@ -30,7 +30,7 @@ export const Container = styled.main.attrs({ className: 'presentation' })`
   `}
   .presentation {
     ${({ theme }) => css`
-      &-webinar {
+      &__webinar {
         font-weight: 700;
         padding: 10px 18px;
         border: 2px solid ${theme.colors['blue-200']};
@@ -46,13 +46,13 @@ export const Container = styled.main.attrs({ className: 'presentation' })`
         }
       }
 
-      &-subtitle {
+      &__subtitle {
         font-weight: 500;
         font-size: 32px;
         color: ${theme.colors.text};
       }
 
-      &-title {
+      &__title {
         position: relative;
         font-weight: bold;
         font-size: 72px;
@@ -86,7 +86,7 @@ export const Container = styled.main.attrs({ className: 'presentation' })`
         ${titleMediaQuery}
       }
 
-      &-text-divider {
+      &__text-divider {
         background-color: ${theme.colors.shadow};
         height: 2px;
         border: 0;
@@ -95,9 +95,10 @@ export const Container = styled.main.attrs({ className: 'presentation' })`
         margin: 35px 24px;
       }
 
-      &-text {
+      &__text {
         color: ${theme.colors.text};
         font-weight: 500;
+        text-align: center;
       }
     `}
   }
