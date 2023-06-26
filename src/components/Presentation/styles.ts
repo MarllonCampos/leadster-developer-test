@@ -38,6 +38,7 @@ export const Container = styled.main.attrs({ className: 'presentation' })`
         color: ${theme.colors['blue-200']};
         margin-bottom: 30px;
         cursor: pointer;
+        transition: background 0.2s linear, color 0.2s linear;
 
         &:hover {
           color: ${theme.colors.white};
