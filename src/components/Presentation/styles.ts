@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 
 const titleMediaQuery = css`
-  @media screen and (max-width: 590px) {
+  @media screen and (max-width: 607px) {
     font-size: 60px;
     &:after {
       transform: scale(0.83) translate(-75%, 0%);
     }
   }
 
-  @media screen and (max-width: 490px) {
+  @media screen and (max-width: 510px) {
     font-size: 44px;
 
     &:after {
@@ -18,7 +18,7 @@ const titleMediaQuery = css`
   }
 `;
 
-export const Container = styled.main.attrs({ className: 'presentation' })`
+export const Container = styled.section.attrs({ className: 'presentation' })`
   padding: 10em 0;
   display: flex;
   flex-direction: column;
