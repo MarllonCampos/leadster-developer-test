@@ -1,23 +1,22 @@
 import React, { HTMLProps } from 'react';
 import { DefaultTheme, css, styled, useTheme } from 'styled-components';
 
-const selectedCSS = (theme: DefaultTheme) => {
-  return css`
-    cursor: pointer;
-    background-color: ${theme.colors['blue-200']};
-    color: ${theme.colors.white};
-    border-color: transparent;
-    transition: background 0.2s linear;
-    &:hover {
-      background-color: ${theme.colors['blue-100']};
-    }
-  `;
-};
+const selectedCSS = (theme: DefaultTheme) => css`
+  cursor: pointer;
+  background-color: ${theme.colors['blue-200']};
+  color: ${theme.colors.white};
+  border-color: transparent;
+  transition: background 0.2s linear;
+  font-weight: bold;
+  &:hover {
+    background-color: ${theme.colors['blue-100']};
+  }
+`;
 
-interface Button extends HTMLProps<HTMLButtonElement> {
+interface Props extends HTMLProps<HTMLButtonElement> {
   selected?: boolean;
 }
-export const Button = styled.button<Button>`
+export const Button = styled.button<Props>`
   padding: 5px 24px;
   background: transparent;
   border-radius: 999px;
