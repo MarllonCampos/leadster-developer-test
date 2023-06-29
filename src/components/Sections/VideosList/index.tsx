@@ -1,9 +1,16 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, FiltersContainer } from './styles';
+import ListFilter from '@/components/ListFilter';
 
 const VideosList: React.FC = () => {
-  return <h1>VideoList</h1>;
+  return (
+    <Container>
+      <FiltersContainer>
+        <ListFilter />
+      </FiltersContainer>
+    </Container>
+  );
 };
 
 export default VideosList;
