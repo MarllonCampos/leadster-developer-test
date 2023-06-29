@@ -76,9 +76,15 @@ const buttonsContainerMediaQuery = css`
   }
 `;
 
-export const viewDemoButtonMediaQuery = css`
+const viewDemoButtonMediaQuery = css`
   @media screen and (max-width: ${MOBILE_SIZE}) {
     font-size: 12px;
+  }
+`;
+
+const rdStampMediaQuery = css`
+  @media screen and (max-width: 415px) {
+    width: 160px;
   }
 `;
 
@@ -93,6 +99,10 @@ export const ButtonsContainer = styled.div.attrs({ className: 'button-container'
     &__view-demo {
       padding: 14px 34px;
       ${viewDemoButtonMediaQuery}
+    }
+
+    &__rd-stamp {
+      ${rdStampMediaQuery}
     }
   }
   ${buttonsContainerMediaQuery}

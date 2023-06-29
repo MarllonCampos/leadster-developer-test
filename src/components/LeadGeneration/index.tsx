@@ -34,7 +34,13 @@ const LeadGeneration: React.FC = () => {
             <Button selected className="button-container__view-demo">
               VER DEMONSTRAÇÃO
             </Button>
-            <Image src={'/selo_RD.png'} width={180} height={70} alt="Selo do RD" />
+            <Image
+              src={'/selo_RD.png'}
+              width={180}
+              height={70}
+              alt="Selo do RD"
+              className="button-container__rd-stamp"
+            />
           </ButtonsContainer>
           <Rating>
             <CreditCardContainer>
