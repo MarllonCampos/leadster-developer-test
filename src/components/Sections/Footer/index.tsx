@@ -3,8 +3,8 @@ import React from 'react';
 import { Container, Copyright, FooterNav, SubHeaderContainer } from './styles';
 import Image from 'next/image';
 import Link from 'next/link';
-import NavLinks from '../NavLinks';
-import NavSocials from '../NavSocials';
+import NavLinks from '../../NavLinks';
+import NavSocials from '../../NavSocials';
 
 type NavLinksObjectsLinks = {
   text: string;

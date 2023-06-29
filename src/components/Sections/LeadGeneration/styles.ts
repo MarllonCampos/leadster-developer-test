@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const DESKTOP_SIZE = '1082px';
 const MOBILE_SIZE = '478px';
 
-export const Container = styled.div`
+export const Container = styled.section`
   padding: 40px 0;
 
   background-color: ${({ theme }) => theme.colors['blue-50']};
