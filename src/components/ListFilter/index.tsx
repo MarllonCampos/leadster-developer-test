@@ -52,9 +52,7 @@ const ListFilter: React.FC = () => {
       ))}
 
       <p className="list-filter__orderBy">Ordenar por</p>
-      <select className="list-filter__select">
-        <option value></option>
-      </select>
+      <select className="list-filter__select">{/* <option value></option> */}</select>
     </Container>
   );
 };
