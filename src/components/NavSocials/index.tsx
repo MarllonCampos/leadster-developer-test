@@ -83,7 +83,7 @@ const NavSocials: React.FC = () => {
       </p>
       <p className="navsocials__contact-info">
         Telefone:{' '}
-        <Link className="navsocials__contact-info__links" href="tel:+5511962570745">
+        <Link className="navsocials__contact-info__links" href="https://wa.me/5511962570745" target="_blank">
           (11)962**-****
         </Link>
       </p>
