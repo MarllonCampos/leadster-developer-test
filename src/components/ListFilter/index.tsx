@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, FilterButtonsContainer, FilterContainer } from './styles';
 import { Button } from '../Button';
 
 type FilterAndOrderProps = {
@@ -45,14 +45,17 @@ const ListFilter: React.FC = () => {
 
   return (
     <Container>
-      {filterButtons.map(({ value, text }) => (
-        <Button key={value} onClick={() => handleFilterClick(value)}>
-          {text}
-        </Button>
-      ))}
-
-      <p className="list-filter__orderBy">Ordenar por</p>
-      <select className="list-filter__select">{/* <option value></option> */}</select>
+      <FilterContainer>
+        <FilterButtonsContainer>
+          {filterButtons.map(({ value, text }) => (
+            <Button key={value} onClick={() => handleFilterClick(value)} className="list-filter__buttons">
+              {text}
+            </Button>
+          ))}
+        </FilterButtonsContainer>
+        <p className="list-filter__orderBy">Ordenar por</p>
+        <select className="list-filter__select">{/* <option value></option> */}</select>
+      </FilterContainer>
     </Container>
   );
 };
