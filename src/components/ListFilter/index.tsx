@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, FilterButtonsContainer, FilterContainer } from './styles';
+import { Container, FilterButtonsContainer, FilterContainer, OrderByContainer, Select } from './styles';
 import { Button } from '../Button';
 
 type FilterAndOrderProps = {
@@ -33,14 +33,22 @@ const filterButtons: FilterAndOrderProps[] = [
 
 const orderOptions: FilterAndOrderProps[] = [
   {
-    text: 'Data de Publicação',
-    value: '',
+    text: 'Mais Recentes',
+    value: 'desc',
+  },
+  {
+    text: 'Mais Antigas',
+    value: 'asc',
   },
 ];
 
-const ListFilter: React.FC = () => {
+type Props = {
+  handleFilterChange: (value: string) => void;
+};
+
+const ListFilter: React.FC<Props> = ({ handleFilterChange }) => {
   const handleFilterClick = (value: string) => {
-    console.log(value);
+    handleFilterChange(value);
   };
 
   return (
@@ -53,8 +61,17 @@ const ListFilter: React.FC = () => {
             </Button>
           ))}
         </FilterButtonsContainer>
-        <p className="list-filter__orderBy">Ordenar por</p>
-        <select className="list-filter__select">{/* <option value></option> */}</select>
+        <OrderByContainer>
+          <p className="list-filter__orderBy">Ordenar por</p>
+          <Select>
+            <option value={''}>Data de Publicação</option>
+            {orderOptions.map(({ text, value }) => (
+              <option key={value} value={value}>
+                {text}
+              </option>
+            ))}
+          </Select>
+        </OrderByContainer>
       </FilterContainer>
     </Container>
   );

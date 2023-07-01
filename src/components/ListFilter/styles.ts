@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+const DESKTOP_BREAKPOINT = '1040px';
+
 export const Container = styled.div.attrs({ className: 'list-filter' })`
   display: flex;
   align-items: center;
@@ -7,21 +9,21 @@ export const Container = styled.div.attrs({ className: 'list-filter' })`
   .list-filter {
     &__buttons {
       white-space: nowrap;
+
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
     }
 
     &__orderBy {
       white-space: nowrap;
-      margin-right: 14px;
     }
   }
 `;
 
 const filterContainerMediaQuery = css`
-  @media screen and (max-width: 890px) {
+  @media screen and (max-width: ${DESKTOP_BREAKPOINT}) {
     flex-wrap: wrap;
-  }
-  @media screen and (max-width: 760px) {
-    max-width: 100vw;
   }
 `;
 
@@ -30,20 +32,21 @@ export const FilterContainer = styled.div`
   align-items: center;
   flex: 1;
   gap: 5px;
-
-  padding: 0 10px;
+  max-width: 100%;
+  overflow: hidden;
   ${filterContainerMediaQuery}
+`;
+
+const filterButtonsContainerMediaQuery = css`
+  @media screen and (max-width: 760px) {
+    overflow-x: scroll;
+  }
 `;
 
 export const FilterButtonsContainer = styled.div`
   display: flex;
   align-items: center;
-  max-width: 100%;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
   padding: 5px;
-  width: 100%;
 
   &::-webkit-scrollbar {
     height: 4px;
@@ -60,6 +63,21 @@ export const FilterButtonsContainer = styled.div`
     border-radius: 999px;
   }
 
-  &::-webkit-scrollbar-thumb:hover {
+  ${filterButtonsContainerMediaQuery}
+`;
+
+export const OrderByContainer = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  @media screen and (max-width: ${DESKTOP_BREAKPOINT}) {
+    margin: initial;
   }
+`;
+export const Select = styled.select`
+  padding: 4px 0 4px 8px;
+  border-radius: 12px;
+  border: 2px solid ${({ theme }) => theme.colors.text};
 `;
