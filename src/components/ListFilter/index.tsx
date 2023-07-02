@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import { Container, FilterButtonsContainer, FilterContainer, OrderByContainer, Select } from './styles';
 import { Button } from '../Button';
+import Link from 'next/link';
 
 type FilterAndOrderProps = {
   text: string;
@@ -44,27 +45,41 @@ const orderOptions: FilterAndOrderProps[] = [
 
 type Props = {
   handleFilterChange: (value: string) => void;
+  handleOrderChange: (value: string) => void;
+  filterSelected?: string | null;
 };
 
-const ListFilter: React.FC<Props> = ({ handleFilterChange }) => {
+const ListFilter: React.FC<Props> = ({ handleFilterChange, handleOrderChange, filterSelected }) => {
   const handleFilterClick = (value: string) => {
+    if (value === filterSelected) return;
     handleFilterChange(value);
   };
 
+  const handleSelectOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    handleOrderChange(value);
+  };
   return (
     <Container>
       <FilterContainer>
         <FilterButtonsContainer>
           {filterButtons.map(({ value, text }) => (
-            <Button key={value} onClick={() => handleFilterClick(value)} className="list-filter__buttons">
+            <Button
+              key={value}
+              onClick={() => handleFilterClick(value)}
+              className="list-filter__buttons"
+              as={Link}
+              href={{ search: `filter=${value}` }}
+              selected={value === filterSelected}
+            >
               {text}
             </Button>
           ))}
         </FilterButtonsContainer>
         <OrderByContainer>
           <p className="list-filter__orderBy">Ordenar por</p>
-          <Select>
-            <option value={''}>Data de Publicação</option>
+          <Select onChange={handleSelectOnChange}>
+            <option defaultChecked>Data de Publicação</option>
             {orderOptions.map(({ text, value }) => (
               <option key={value} value={value}>
                 {text}

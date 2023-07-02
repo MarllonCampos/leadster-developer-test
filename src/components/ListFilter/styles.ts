@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const DESKTOP_BREAKPOINT = '1040px';
+const DESKTOP_BREAKPOINT = '1125px';
 
 export const Container = styled.div.attrs({ className: 'list-filter' })`
   display: flex;
@@ -9,6 +9,7 @@ export const Container = styled.div.attrs({ className: 'list-filter' })`
   .list-filter {
     &__buttons {
       white-space: nowrap;
+      text-decoration: none;
 
       &:not(:last-child) {
         margin-right: 16px;
@@ -77,7 +78,7 @@ export const OrderByContainer = styled.div`
   }
 `;
 export const Select = styled.select`
-  padding: 4px 0 4px 8px;
-  border-radius: 12px;
+  padding: 5px 0 5px 8px;
+  border-radius: 999px;
   border: 2px solid ${({ theme }) => theme.colors.text};
 `;
