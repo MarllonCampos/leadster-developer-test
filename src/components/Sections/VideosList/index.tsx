@@ -6,24 +6,48 @@ import ListFilter from '@/components/ListFilter';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import VideoCard from '@/components/VideoCard';
 import { VideoInfo } from '@/types/videos';
+import Pagination from '@/components/Pagination';
+
+type VideosInfoState = {
+  videosList: Array<VideoInfo>;
+  pages: number;
+};
+
+type ApiAndQueryParams = {
+  filterValue: string | null;
+  orderValue: string | null;
+  pageValue: number | null;
+};
 
 const VideosList: React.FC = () => {
   const searchParams = useSearchParams();
   const orderParam = searchParams.get('order');
   const filterParam = searchParams.get('filter');
-  const [filter, setFilter] = useState(filterParam || 'all');
-  const [order, setOrder] = useState(orderParam || 'desc');
-  const [videosList, setVideosList] = useState<Array<VideoInfo> | []>([]);
-  function createNewPathName({ filterValue, orderValue }: { filterValue: string; orderValue: string }): string {
-    if (order && filter) return `?filter=${filterValue}&order=${orderValue}`;
+  const pageParam = Number(searchParams.get('page'));
 
-    if (order) return `?order=${orderValue}`;
-    if (filter) return `?filter=${filterValue}`;
-    return '';
+  const [filter, setFilter] = useState(filterParam);
+  const [order, setOrder] = useState(orderParam);
+  const [page, setPage] = useState(pageParam);
+  const [videosInfo, setVideosInfo] = useState<VideosInfoState>({ videosList: [], pages: 0 });
+  const [modalInfo, setModalInfo] = useState<VideoInfo>();
+  function createNewPathName({ filterValue, orderValue, pageValue }: ApiAndQueryParams): string {
+    const queryParams: string[] = [];
+
+    if (filterValue) {
+      queryParams.push(`filter=${filterValue}`);
+    }
+    if (orderValue) {
+      queryParams.push(`order=${orderValue}`);
+    }
+    if (pageValue) {
+      queryParams.push(`page=${pageValue}`);
+    }
+
+    return queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
   }
 
-  function getList({ filterValue, orderValue }: { filterValue: string; orderValue: string }) {
-    const createUrl = `api/videos${createNewPathName({ filterValue, orderValue })}`;
+  function getList({ filterValue, orderValue, pageValue }: ApiAndQueryParams) {
+    const createUrl = `api/videos${createNewPathName({ filterValue, orderValue, pageValue })}`;
     return fetch(createUrl, {
       method: 'GET',
       headers: {
@@ -33,17 +57,28 @@ const VideosList: React.FC = () => {
   }
 
   useEffect(() => {
-    history.replaceState(null, '', createNewPathName({ filterValue: filter, orderValue: order }));
-    console.log('useEffect');
-    getList({ filterValue: filter, orderValue: order }).then((response) => setVideosList(response));
-  }, [order, filter]);
+    const ApiAndQueryParamsObject = {
+      filterValue: filter,
+      orderValue: order,
+      pageValue: page,
+    };
+
+    history.replaceState(null, '', createNewPathName(ApiAndQueryParamsObject));
+    getList(ApiAndQueryParamsObject).then(({ videos, pages }) => setVideosInfo({ videosList: videos, pages }));
+  }, [order, filter, page]);
 
   const filterChange = (value: string) => {
     setFilter(value);
+    setPage(1);
   };
 
   const orderChange = (value: string) => {
     setOrder(value);
+    setPage(1);
+  };
+
+  const pageChange = (value: number) => {
+    setPage(value);
   };
 
   function handleOpenModal(videoProps: VideoInfo) {
@@ -60,10 +95,14 @@ const VideosList: React.FC = () => {
         />
       </FiltersContainer>
       <VideosContainer>
-        {videosList.map((videoProps, index) => (
-          <VideoCard key={index} title={videoProps.title} handleVideoCardClick={() => handleOpenModal(videoProps)} />
-        ))}
+        {videosInfo &&
+          videosInfo.videosList.map((videoProps, index) => (
+            <VideoCard key={index} title={videoProps.title} handleVideoCardClick={() => handleOpenModal(videoProps)} />
+          ))}
       </VideosContainer>
+      {videosInfo.pages > 1 ? (
+        <Pagination pages={videosInfo.pages} selectedPage={page || 1} handlePageChange={pageChange} />
+      ) : null}
     </Container>
   );
 };
