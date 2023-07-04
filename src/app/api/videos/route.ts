@@ -179,7 +179,13 @@ export function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const filter = searchParams.get('filter');
   const order = searchParams.get('order');
-  let formattedVideos = VIDEOS;
+  const page = Number(searchParams.get('page')) || 1;
+  const offsetPage = page - 1;
+  const QUANTITY_PER_PAGE = 5;
+
+  let formattedVideos = [...VIDEOS];
+
+  let videosPaginated: Array<Array<VideoInfo>> = [];
 
   if (order) {
     formattedVideos.sort((a, b) => {
@@ -191,11 +197,22 @@ export function GET(request: NextRequest) {
     });
   }
 
-  if (filter == 'all') return NextResponse.json(formattedVideos, { status: 200 });
-
-  if (filter) {
+  if (filter && filter !== 'all') {
     formattedVideos = formattedVideos.filter((video) => video.type === filter);
   }
 
-  return NextResponse.json(formattedVideos, { status: 200 });
+  do {
+    if (formattedVideos.length < QUANTITY_PER_PAGE) {
+      videosPaginated.push([...formattedVideos.splice(0, formattedVideos.length)]);
+    } else {
+      videosPaginated.push([...formattedVideos.splice(0, QUANTITY_PER_PAGE)]);
+    }
+  } while (formattedVideos.length != 0);
+
+  if (page > videosPaginated.length)
+    return NextResponse.json(
+      { title: 'Error', message: "You are trying to access a page that doesn't exist" },
+      { status: 400 }
+    );
+  return NextResponse.json(videosPaginated[offsetPage], { status: 200 });
 }
