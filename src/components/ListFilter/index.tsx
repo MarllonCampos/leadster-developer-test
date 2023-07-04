@@ -47,6 +47,7 @@ const orderOptions: FilterAndOrderProps[] = [
   },
 ];
 
+const possibleOrderValues = ['asc', 'desc'];
 type Props = {
   handleFilterChange: (value: string) => void;
   handleOrderChange: (value: string) => void;
@@ -61,6 +62,7 @@ const ListFilter: React.FC<Props> = ({ handleFilterChange, handleOrderChange, fi
 
   const handleSelectOnChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
+    if (!possibleOrderValues.includes(value)) return handleOrderChange('desc');
     handleOrderChange(value);
   };
   return (
