@@ -1,4 +1,4 @@
-type DownloadChipsType = 'xls' | 'doc' | 'ppt' | 'zip';
+export type DownloadChipsType = 'xls' | 'doc' | 'ppt' | 'zip';
 
 type DownloadChips = {
   name: string;
