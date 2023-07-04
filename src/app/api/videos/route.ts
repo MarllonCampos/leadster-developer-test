@@ -214,5 +214,10 @@ export function GET(request: NextRequest) {
       { title: 'Error', message: "You are trying to access a page that doesn't exist" },
       { status: 400 }
     );
-  return NextResponse.json(videosPaginated[offsetPage], { status: 200 });
+
+  const returnObject = {
+    videos: videosPaginated[offsetPage],
+    pages: videosPaginated.length,
+  };
+  return NextResponse.json(returnObject, { status: 200 });
 }
