@@ -32,18 +32,21 @@ const socialLinks: SocialLinks[] = [
 const NavSocials: React.FC = () => {
   const [socialState, setSocialState] = useState<SocialLinks[]>(socialLinks);
 
+  const isApple = () => {
+    const userAgent = navigator.userAgent;
+    return /iPhone|iPod/i.test(userAgent);
+  };
+
   function changeLinksToMobile(event: Event) {
     const target = event.target as Window;
-    if (target.innerWidth < MOBILE_DEVICE_SIZE) {
-      return setSocialState((prevState) =>
-        convertSocialLinksToDeepLink({
-          innerWidth: target.innerWidth,
-          socialLinksArray: prevState,
-        })
-      );
-    } else {
-      setSocialState(socialLinks);
-    }
+    if (isApple() || target.innerWidth > MOBILE_DEVICE_SIZE) return setSocialState(socialLinks);
+
+    return setSocialState((prevState) =>
+      convertSocialLinksToDeepLink({
+        innerWidth: target.innerWidth,
+        socialLinksArray: prevState,
+      })
+    );
   }
 
   useEffect(() => {
