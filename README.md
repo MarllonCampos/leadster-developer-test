@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Atividade Front-end</h1>
 
-## Getting Started
+Teste executado como desafio de vaga para trabalhar na empresa Leadster a plataforma líder em Marketing Conversacional no Brasil.
 
-First, run the development server:
+🔗: <a href="https://leadster-developer-test.vercel.app/">leadster-developer-test.vercel.app</a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## 💻Tecnologias usadas:
+
+- NextJs
+- Typescript
+- Styled Components
+- Node.js
+- Vercel
+
+## 🧑‍ Experiência
+
+Minha experiência ao realizar o teste foi incrível, tendo que fazer o gerenciamento do meu tempo para poder ao mesmo tempo codar como também pensar se a estrutura que estou seguindo pode escalar saudável e sem problemas.
+
+Tentei ao máximo **não utilizar bibliotecas externas** para não aumentar o nível de complexidade de código para que todos que quiserem baixar, ler e entender o código não precisem passar por uma curva de aprendizado ainda maior.
+
+Utilizando **Styled-Components** achei muito importante utilizar seu contexto nativo para ter acesso ao tema da aplicação enquanto desenvolvia os components e também para que no futuro, se for necessário trocar as cores da aplicação ficaria muito simples trocar apenas em alguns arquivos.
+
+Para organizar o código em seus diretórios segui o que o próprio **NextJS** e a comunidade recomenda, seguindo criando um diretório para os components e como este é apenas uma landing page não precisamos de mais páginas.
+
+Utilizar **TypeScript** sempre é algo que me anima, pois consigo expandir ainda mais meus conhecimentos na tecnologia como também facilitar o entendimento do código para o próximo desenvolvedor.
+
+Para finalizar gostaria de agradecer a oportunidade de participar desse teste e estarei adicionado esse teste no meu portfólio :D
+
+## 🛠️Instalação:
+
+Para instalar as dependências, execute um dos seguinte comandos:
+
+```
+npm install or yarn install or pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻Uso:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para iniciar o projeto, execute um dos seguintes comandos:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+npm start or yarn start or pnpm dev
+```
 
-## Learn More
+Isso iniciará o projeto em`http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## 🧰 Detalhes e funções de alguns arquivos:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Próximos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Poderia ser adicionado testes unitários para algumas helper functions como por exemplo:
 
-## Deploy on Vercel
+- `convertSocialLinksToDeepLink.ts` esta helper function converte os links do padrão da web para um padrão deep link para quando o usuário estiver utilizando via smartphone, abrir diretamente o aplicativo ao invés de mais uma janela do chrome
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Poderia também adicionar uma biblioteca para fazer o gerenciamento da criação dos components, como por exemplo o storybook para que a gente consiga entender quais são os parametros de cada component.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Poderia também criar um Design System para criar os componentes seguindo um padrão estruturado por um profissional de UI/UX
+
+Para finalizar seria interessante conectar um software CMS (Content Manager System) para gerar conteúdos para as próximas páginas e também deixar o trabalho de alterar o frontend para o time de marketing para que eles possam testar estratégias mais rápido e sair na frente das concorrentes
