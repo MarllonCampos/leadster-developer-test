@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const DESKTOP_BREAKPOINT = '1125px';
+const DESKTOP_BREAKPOINT = '1152px';
 
 export const Container = styled.div.attrs({ className: 'list-filter' })`
   display: flex;
@@ -22,12 +22,6 @@ export const Container = styled.div.attrs({ className: 'list-filter' })`
   }
 `;
 
-const filterContainerMediaQuery = css`
-  @media screen and (max-width: ${DESKTOP_BREAKPOINT}) {
-    flex-wrap: wrap;
-  }
-`;
-
 export const FilterContainer = styled.div`
   display: flex;
   align-items: center;
@@ -35,19 +29,14 @@ export const FilterContainer = styled.div`
   gap: 5px;
   max-width: 100%;
   overflow: hidden;
-  ${filterContainerMediaQuery}
-`;
-
-const filterButtonsContainerMediaQuery = css`
-  @media screen and (max-width: 760px) {
-    overflow-x: scroll;
-  }
+  flex-wrap: wrap;
 `;
 
 export const FilterButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 5px;
+  overflow-x: auto;
 
   &::-webkit-scrollbar {
     height: 4px;
@@ -63,8 +52,6 @@ export const FilterButtonsContainer = styled.div`
 
     border-radius: 999px;
   }
-
-  ${filterButtonsContainerMediaQuery}
 `;
 
 export const OrderByContainer = styled.div`
@@ -72,7 +59,7 @@ export const OrderByContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-
+  flex-basis: 265px;
   @media screen and (max-width: ${DESKTOP_BREAKPOINT}) {
     margin: initial;
   }

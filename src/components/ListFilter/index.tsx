@@ -30,6 +30,10 @@ const filterButtons: FilterAndOrderProps[] = [
     text: 'Mídia Paga',
     value: 'midia-paga',
   },
+  {
+    text: 'Todos',
+    value: 'all',
+  },
 ];
 
 const orderOptions: FilterAndOrderProps[] = [
@@ -68,8 +72,6 @@ const ListFilter: React.FC<Props> = ({ handleFilterChange, handleOrderChange, fi
               key={value}
               onClick={() => handleFilterClick(value)}
               className="list-filter__buttons"
-              as={Link}
-              href={{ search: `filter=${value}` }}
               selected={value === filterSelected}
             >
               {text}
