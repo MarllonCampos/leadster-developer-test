@@ -86,7 +86,7 @@ const VideosList: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container id="videos">
       <FiltersContainer>
         <ListFilter
           handleFilterChange={filterChange}
