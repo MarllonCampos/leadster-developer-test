@@ -7,3 +7,16 @@ export const Container = styled.section`
 `;
 
 export const FiltersContainer = styled.div``;
+
+export const VideosContainer = styled.div`
+  border: 0 solid ${({ theme }) => theme.colors.shadow};
+  margin-top: 24px;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  padding: 40px 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 24px;
+`;
