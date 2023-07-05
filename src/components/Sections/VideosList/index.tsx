@@ -7,6 +7,8 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import VideoCard from '@/components/VideoCard';
 import { VideoInfo } from '@/types/videos';
 import Pagination from '@/components/Pagination';
+import DownloadChips from '@/components/DownloadChips';
+import VideoModal from '@/components/VideoModal';
 
 type VideosInfoState = {
   videosList: Array<VideoInfo>;
@@ -29,7 +31,7 @@ const VideosList: React.FC = () => {
   const [order, setOrder] = useState(orderParam);
   const [page, setPage] = useState(pageParam);
   const [videosInfo, setVideosInfo] = useState<VideosInfoState>({ videosList: [], pages: 0 });
-  const [modalInfo, setModalInfo] = useState<VideoInfo>();
+  const [modalInfo, setModalInfo] = useState<VideoInfo | null>(null);
   function createNewPathName({ filterValue, orderValue, pageValue }: ApiAndQueryParams): string {
     const queryParams: string[] = [];
 
@@ -82,7 +84,10 @@ const VideosList: React.FC = () => {
   };
 
   function handleOpenModal(videoProps: VideoInfo) {
-    console.log(videoProps);
+    setModalInfo(videoProps);
+  }
+  function handleCloseModal() {
+    setModalInfo(null);
   }
 
   return (
@@ -103,6 +108,11 @@ const VideosList: React.FC = () => {
       {videosInfo.pages > 1 ? (
         <Pagination pages={videosInfo.pages} selectedPage={page || 1} handlePageChange={pageChange} />
       ) : null}
+      {modalInfo && <VideoModal video={modalInfo} handleCloseModal={() => {}} />}
+      <DownloadChips title="SpreadSheet" type="xls" />
+      <DownloadChips title="Document" type="doc" />
+      <DownloadChips title="Presentation" type="ppt" />
+      <DownloadChips title="Folder" type="zip" />
     </Container>
   );
 };
