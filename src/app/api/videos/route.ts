@@ -4,6 +4,31 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const VIDEOS: Array<VideoInfo> = [
   {
+    title: 'Estratégias avançadas de SEO para melhorar seu ranking',
+    description:
+      'Descubra técnicas avançadas de otimização para mecanismos de busca e aumente o ranking do seu site nos resultados de pesquisa.',
+    downloads: [
+      {
+        name: 'Presentation.ppt',
+        type: 'ppt',
+      },
+      {
+        name: 'Document.doc',
+        type: 'doc',
+      },
+      {
+        name: 'Folder.zip',
+        type: 'zip',
+      },
+      {
+        name: 'SpreadSheets.xls',
+        type: 'xls',
+      },
+    ],
+    created_at: new Date('2023-11-25'),
+    type: 'agencias',
+  },
+  {
     title: 'Aprenda a criar APIs RESTful com Node.js',
     description:
       'Neste vídeo, mostramos como criar APIs RESTful usando o Node.js e Express, abordando os principais conceitos e práticas recomendadas.',
@@ -83,31 +108,6 @@ const VIDEOS: Array<VideoInfo> = [
     ],
     created_at: new Date('2023-10-15'),
     type: 'marketing-digital',
-  },
-  {
-    title: 'Estratégias avançadas de SEO para melhorar seu ranking',
-    description:
-      'Descubra técnicas avançadas de otimização para mecanismos de busca e aumente o ranking do seu site nos resultados de pesquisa.',
-    downloads: [
-      {
-        name: 'Guia Avançado de SEO.ppt',
-        type: 'ppt',
-      },
-      {
-        name: 'Lista de Ferramentas de SEO.doc',
-        type: 'doc',
-      },
-      {
-        name: 'Ferramentas SEO.zip',
-        type: 'zip',
-      },
-      {
-        name: 'Documentação da SpreadSheet.xls',
-        type: 'xls',
-      },
-    ],
-    created_at: new Date('2023-11-25'),
-    type: 'agencias',
   },
   {
     title: 'Como aumentar sua Geração de Leads feat. Traktor',
