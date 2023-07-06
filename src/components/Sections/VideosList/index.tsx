@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Container, FiltersContainer, VideosContainer } from './styles';
 import ListFilter from '@/components/ListFilter';
@@ -69,6 +69,9 @@ const VideosList: React.FC = () => {
     getList(ApiAndQueryParamsObject).then(({ videos, pages }) => setVideosInfo({ videosList: videos, pages }));
   }, [order, filter, page]);
 
+  useEffect(() => {
+    if (page > 1) document.getElementById('videos')?.scrollIntoView();
+  }, [page]);
   const filterChange = (value: string) => {
     setFilter(value);
     setPage(1);
@@ -108,11 +111,7 @@ const VideosList: React.FC = () => {
       {videosInfo.pages > 1 ? (
         <Pagination pages={videosInfo.pages} selectedPage={page || 1} handlePageChange={pageChange} />
       ) : null}
-      {modalInfo && <VideoModal video={modalInfo} handleCloseModal={() => {}} />}
-      <DownloadChips title="SpreadSheet" type="xls" />
-      <DownloadChips title="Document" type="doc" />
-      <DownloadChips title="Presentation" type="ppt" />
-      <DownloadChips title="Folder" type="zip" />
+      {modalInfo && <VideoModal video={modalInfo} handleCloseModal={handleCloseModal} />}
     </Container>
   );
 };
