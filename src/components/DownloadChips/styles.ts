@@ -1,5 +1,6 @@
 import { myTheme } from '@/styles/tokens';
 import { DownloadChipsType } from '@/types/videos';
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 type TypeProps = {
@@ -29,7 +30,7 @@ const COLORS = {
   },
 };
 
-export const Container = styled.div.attrs<TypeProps>({ className: 'download-chips' })`
+export const Container = styled(Link).attrs<TypeProps>({ className: 'download-chips' })`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -38,7 +39,7 @@ export const Container = styled.div.attrs<TypeProps>({ className: 'download-chip
 
   border-radius: 6px;
   background-color: ${({ type }) => COLORS[type].containerColor};
-
+  text-decoration: none;
   ${({ type }) => css`
     .download-chips {
       &__name {

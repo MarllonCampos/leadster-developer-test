@@ -10,7 +10,7 @@ type Props = {
 
 const DownloadChips: React.FC<Props> = ({ title, type }) => {
   return (
-    <Container type={type}>
+    <Container type={type} href="/MarllonCampos_FullStack-Pt-br.pdf" download target="_blank">
       <svg
         width="24"
         height="24"
