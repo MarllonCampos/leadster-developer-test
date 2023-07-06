@@ -33,7 +33,6 @@ export const Container = styled.div.attrs<TypeProps>({ className: 'download-chip
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-grow: 1;
   width: fit-content;
   padding-right: 8px;
 
